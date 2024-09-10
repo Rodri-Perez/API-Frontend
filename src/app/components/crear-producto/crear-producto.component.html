@@ -1,0 +1,183 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">{{ titulo }}</span>
+
+          <form
+            method="POST"
+            class="mt-3"
+            enctype="multipart/form-data"
+            novalidate=""
+            [formGroup]="productoForm"
+            (ngSubmit)="agregarProducto()"
+          >
+            <fieldset>
+              <input
+                type="hidden"
+                name="csrfmiddlewaretoken"
+                value="KvY61Lm66VrVtsSCwy0fpbjCvK3ixV0QTFsa1efp3zgfhATXbchlHfNzHR8uCq21"
+              />
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  placeholder="Codigo Producto"
+                  formControlName="cod"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    productoForm.get('cod')?.hasError('required') &&
+                    productoForm.get('cod')?.touched
+                  "
+                >
+                  <span
+                    >EL codigo del producto es
+                    <strong>obligatorio</strong></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  placeholder="Nombre de Producto"
+                  formControlName="nombre"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    productoForm.get('nombre')?.hasError('required') &&
+                    productoForm.get('nombre')?.touched
+                  "
+                >
+                  <span
+                    >EL nombre del producto es
+                    <strong>obligatorio</strong></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  placeholder="Categoria de Producto"
+                  formControlName="categoria"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    productoForm.get('categoria')?.hasError('required') &&
+                    productoForm.get('categoria')?.touched
+                  "
+                >
+                  <span
+                    >La categoria del producto es
+                    <strong>obligatorio</strong></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  placeholder="Talle/Peso del Producto"
+                  formControlName="talle_peso"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    productoForm.get('talle_peso')?.hasError('required') &&
+                    productoForm.get('talle_peso')?.touched
+                  "
+                >
+                  <span
+                    >EL Talle/Peso del producto es
+                    <strong>obligatorio</strong></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  placeholder="Descripcion del Producto"
+                  formControlName="descripcion"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    productoForm.get('descripcion')?.hasError('required') &&
+                    productoForm.get('descripcion')?.touched
+                  "
+                >
+                  <span
+                    >La descripcion del producto es
+                    <strong>obligatorio</strong></span
+                  >
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  placeholder="Stock"
+                  formControlName="stock"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    productoForm.get('stock')?.hasError('required') &&
+                    productoForm.get('stock')?.touched
+                  "
+                >
+                  <span
+                    >EL stock del producto es <strong>obligatorio</strong></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  placeholder="Precio"
+                  formControlName="precio"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    productoForm.get('precio')?.hasError('required') &&
+                    productoForm.get('precio')?.touched
+                  "
+                >
+                  <span
+                    >EL precio del producto es
+                    <strong>obligatorio</strong></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <button
+                  class="btn btn-secondary btn-lg float-start mt-3"
+                  routerLink="/"
+                >
+                  Volver
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-success btn-lg float-end mt-3"
+                  [disabled]="productoForm.invalid"
+                >
+                  Aceptar
+                </button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
