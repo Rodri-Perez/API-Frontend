@@ -160,6 +160,26 @@
                 </div>
               </div>
               <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  placeholder="Imagen Url"
+                  formControlName="imagen"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    productoForm.get('imagen')?.hasError('required') &&
+                    productoForm.get('imagen')?.touched
+                  "
+                >
+                  <span
+                    >La imagen del producto es
+                    <strong>obligatorio</strong></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
                 <button
                   class="btn btn-secondary btn-lg float-start mt-3"
                   routerLink="/"
