@@ -12,6 +12,7 @@ html body {
 .spinner-border {
   margin: 22% 50%;
 }
+<<<<<<< HEAD
 
 .clase {
   width: 205vh;
@@ -28,3 +29,14 @@ html body {
 .titulo_carrito {
   text-align: center;
 }
+=======
+#bonsito
+ {
+  position: absolute;
+  margin-top: 470px;
+  left: 90%;
+ }
+/* #textito{
+
+} */
+>>>>>>> api-frontend/mauro

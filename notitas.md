@@ -1,0 +1,6 @@
+- Poner foreign key en compras
+- Investigar Json Web Token
+- Investigar como funciona poner imagenes en DJango
+- Investigar cloudinary
+- Investigar como filtrar contraseña en DJango
+- 

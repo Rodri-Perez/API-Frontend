@@ -57,6 +57,7 @@ export class CrearProductoComponent implements OnInit {
       descripcion: this.productoForm.get('descripcion')?.value,
       stock: this.productoForm.get('stock')?.value,
       precio: this.productoForm.get('precio')?.value,
+      imagen: this.productoForm.get('imagen')?.value,
     };
 
     if (this.id !== null) {

@@ -4,6 +4,7 @@ import { CrearProductoComponent } from './components/crear-producto/crear-produc
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { LoginComponent } from './components/login/login.component';
 import { SigInComponent } from './components/sig-in/sig-in.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -12,5 +13,6 @@ export const routes: Routes = [
   { path: 'editar-producto/:id', component: CrearProductoComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SigInComponent },
+  { path: 'carrito', component: CarritoComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
