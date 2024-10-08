@@ -1,0 +1,85 @@
+<title>Producto</title>
+<header>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="1724358321894.png" width="80" height="50" />
+        Welcome
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/ProductosPR">Productosps</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/listar-productos">Productos</a>
+          </li>
+        </ul>
+        <div>
+          <a
+            routerLink="/login"
+            class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+            >Login
+          </a>
+          <span> / </span>
+          <a
+            routerLink="/register"
+            class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+            >Sign-in</a
+          >
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<h1>{{title}}</h1>
+<div  
+*NgIf="listProductos.length < 0">
+</div>
+<div class="card " style="max-width: 100%;">
+    <div class="row g-0">
+      <div class="col-md-2">
+        <img src="..." class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-body-primary">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <thead>
+    <tr>
+      <th scope="col">Producto</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">descripcion</th>
+      <th scope="col">talle</th>
+      <th scope="col">stock</th>
+      <th scope="col">precio</th>
+    </tr>
+    <tr *NgFor="let producto of listProductos">
+      <th scope="row">{{ producto.nombre }}</th>
+      <td>{{ producto.categoria }}</td>
+      <td>{{ producto.descripcion }}</td>
+      <td>{{ producto.talle_peso }}</td>
+      <td>{{ producto.stock }}</td>
+      <td>{{ producto.precio }}</td>
+      <td>
+      </td>
+    </tr>
+  </thead>
+  
+<p>vista-producto works!</p>

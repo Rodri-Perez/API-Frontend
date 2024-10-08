@@ -7,16 +7,15 @@ import { NgFor, NgIf } from '@angular/common';
 import { Toast, ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-listar-productos',
+  selector: 'appvistaproducto',
   standalone: true,
-  imports: [RouterLink, NgFor, NgIf, ToastrModule],
-  providers: [CargarScriptsService],
-  templateUrl: './listar-productos.component.html',
-  styleUrl: './listar-productos.component.css',
+  imports: [RouterLink],
+  templateUrl: './vista-producto.component.html',
+  styleUrl: './vista-producto.component.css'
 })
-export class 
-ListarProductosComponent implements OnInit {
-  listProductos: Producto[] = [];
+export class VistaProductoComponent {
+ title =  "po"
+ listProductos: Producto[] = [];
 
   constructor(
     private _cargaScripts: CargarScriptsService,
@@ -34,18 +33,5 @@ ListarProductosComponent implements OnInit {
     this.__productoService.getAllProductos().subscribe((data) => {
       this.listProductos = data;
     });
-  }
-
-  eliminarProducto(id: any) {
-    this.__productoService.eliminarProducto(id).subscribe(
-      (data) => {
-        this.obtenerProductos();
-        this._toastService.success('Producto eliminado correctamente');
-      },
-      (error) => {
-        console.log(error);
-        this._toastService.error('Producto inexistente');
-      }
-    );
   }
 }
