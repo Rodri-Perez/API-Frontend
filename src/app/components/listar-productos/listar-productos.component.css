@@ -12,15 +12,13 @@ html body {
 .spinner-border {
   margin: 22% 50%;
 }
-<<<<<<< HEAD
-
 .clase {
   width: 205vh;
 }
 
 .carrito_container {
   background-color: rgba(22, 22, 22, 0.575);
-
+  padding: 10px 20px;
   min-height: 70vh;
   border-radius: 20px;
   border: 1px solid #464545c9;
@@ -29,14 +27,20 @@ html body {
 .titulo_carrito {
   text-align: center;
 }
-=======
-#bonsito
- {
+
+.carrito_body {
+  min-height: 50vh;
+}
+
+hr {
+  height: 10px;
+}
+
+#bonsito {
   position: absolute;
   margin-top: 470px;
   left: 90%;
- }
+}
 /* #textito{
 
 } */
->>>>>>> api-frontend/mauro
