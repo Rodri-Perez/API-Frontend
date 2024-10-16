@@ -1,12 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, Inject, NgModule, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { CargarScriptsService } from '../../services/cargar-scripts.service';
+import { UserService } from '../../services/users.service';
+import { User } from '../../models/user';
+import { NgFor, NgIf } from '@angular/common';
+import { Toast, ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, NgFor, NgIf, ToastrModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
-  pedro = 1
+export class LoginComponent implements OnInit {
+  pedro = 1;
+  usuario: User[] = [];
+  ngOnInit(): void {}
+  constructor(private user_http: UserService) {}
+  obtenerUsuario() {
+    this.user_http.getUser().subscribe((data) => {
+      this.usuario = data;
+    });
+  }
 }

@@ -18,6 +18,7 @@ export class ListarProductosComponent implements OnInit {
   auth = false;
 
   listProductos: Producto[] = [];
+  bus = "";
 
   constructor(
     private _cargaScripts: CargarScriptsService,
@@ -49,4 +50,8 @@ export class ListarProductosComponent implements OnInit {
       }
     );
   }
+  cambio(talle: string){
+    this.bus = talle;
+  }
 }
+

@@ -3,4 +3,4 @@
 - Investigar como funciona poner imagenes en DJango
 - Investigar cloudinary
 - Investigar como filtrar contraseña en DJango
-- 
+- realizar servicio http

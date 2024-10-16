@@ -9,6 +9,7 @@ import {
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../models/user';
+import { UserService } from '../../services/users.service';
 
 @Component({
   selector: 'app-sig-in',
@@ -24,6 +25,7 @@ export class SigInComponent {
     private fb: FormBuilder,
     private router: Router,
     private aRouter: ActivatedRoute,
+    private user_http: UserService,
     private _toastService: ToastrService
   ) {
     this.userForm = this.fb.group({
@@ -43,5 +45,16 @@ export class SigInComponent {
       email: this.userForm.get('email')?.value,
       password: this.userForm.get('password')?.value,
     };
+    this.user_http.postUser(USUARIO).subscribe(
+      (data) => {
+        this.router.navigate(['/']);
+        this._toastService.success('Usuario registrado correctamente');
+      },
+      (error) => {
+        console.log(error);
+        this._toastService.error('No se pudo registrar al usuario');
+        this.userForm.reset();
+      }
+    );
   }
 }
