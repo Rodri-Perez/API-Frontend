@@ -14,8 +14,9 @@ import { Toast, ToastrModule, ToastrService } from 'ngx-toastr';
   templateUrl: './listar-productos.component.html',
   styleUrl: './listar-productos.component.css',
 })
-export class 
-ListarProductosComponent implements OnInit {
+export class ListarProductosComponent implements OnInit {
+  auth = false;
+
   listProductos: Producto[] = [];
 
   constructor(

@@ -39,6 +39,7 @@ export class CrearProductoComponent implements OnInit {
       descripcion: ['', Validators.required],
       stock: ['', Validators.required],
       precio: ['', Validators.required],
+      imagen: ['', Validators.required],
     });
     this.id = this.aRouter.snapshot.paramMap.get('id')!;
   }
@@ -100,9 +101,8 @@ export class CrearProductoComponent implements OnInit {
         descripcion: data.descripcion,
         stock: data.stock,
         precio: data.precio,
+        imagen: data.imagen,
       });
     });
   }
 }
-
-

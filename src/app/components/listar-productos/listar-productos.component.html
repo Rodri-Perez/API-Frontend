@@ -23,6 +23,7 @@
                 <th scope="col">Producto</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">descripcion</th>
+                <th scope="col">imagen</th>
                 <th scope="col">talle</th>
                 <th scope="col">stock</th>
                 <th scope="col">precio</th>
@@ -31,10 +32,11 @@
                 <th scope="row">{{ producto.nombre }}</th>
                 <td>{{ producto.categoria }}</td>
                 <td>{{ producto.descripcion }}</td>
+                <td><img src="{{ producto.imagen }}" width="60px" /></td>
                 <td>{{ producto.talle_peso }}</td>
                 <td>{{ producto.stock }}</td>
                 <td>{{ producto.precio }}</td>
-                <td>
+                <td *ngIf="auth">
                   <i
                     class="fa-solid fa-trash text-danger"
                     (click)="eliminarProducto(producto.id)"
@@ -43,6 +45,9 @@
                     class="fa-solid fa-pen-to-square text-primary"
                     [routerLink]="['/editar-producto', producto.id]"
                   ></i>
+                </td>
+                <td *ngIf="auth == false">
+                  <i class="fa-solid fa-plus text-success"></i>
                 </td>
               </tr>
             </thead>
