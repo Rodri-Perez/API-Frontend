@@ -5,9 +5,16 @@
           <li (click)="cambio('a')">a</li>
           <li (click)="cambio('s')">s</li>
           <li (click)="cambio('m')">m</li>
-          <li (click)="cambio('porno')">porno</li>
-          <li (click)="cambio('rule')">rule</li>
-          <li (click)="cambio('A MI NO ACIDOOO')">A MI NO ACIDOOO</li>
+        </div>
+        <div>
+          <li (click)="cambio_cat('Remeras')">Remeras</li>
+          <li (click)="cambio_cat('Pantalones')">Pantalones</li>
+          <li (click)="cambio_cat('Zapatillas')">Zapatillas</li>
+          <li (click)="cambio_cat('Discos')">Discos</li>
+          <li (click)="cambio_cat('Barras')">Barras</li>
+          <li (click)="cambio_cat('Pesas')">Pesas</li>
+          <li (click)="cambio_cat('Pelotas')">Las que tengo colgadas</li>
+
         </div>
         <div class="card">
         <div class="card-body text-center">
@@ -37,12 +44,12 @@
                 <th scope="col">precio</th>
               </tr>
               <tr *ngFor="let producto of listProductos">
-                <th scope="row" *ngIf="producto.talle_peso == bus">{{ producto.nombre }}</th>
-                <td *ngIf="producto.talle_peso == bus">{{ producto.categoria }}</td>
-                <td *ngIf="producto.talle_peso == bus">{{ producto.descripcion }}</td>
-                <td *ngIf="producto.talle_peso == bus">{{ producto.talle_peso }}</td>
-                <td *ngIf="producto.talle_peso == bus">{{ producto.stock }}</td>
-                <td *ngIf="producto.talle_peso == bus">{{ producto.precio }}</td>
+                <th scope="row" *ngIf="producto.talle_peso == bus && producto.categoria == busc">{{ producto.nombre }}</th>
+                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc">{{ producto.categoria }}</td>
+                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc">{{ producto.descripcion }}</td>
+                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc">{{ producto.talle_peso }}</td>
+                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc">{{ producto.stock }}</td>
+                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc">{{ producto.precio }}</td>
                 <td>
                   <i
                     class="fa-solid fa-trash text-danger"

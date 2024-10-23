@@ -5,6 +5,7 @@ import { UserService } from '../../services/users.service';
 import { User } from '../../models/user';
 import { NgFor, NgIf } from '@angular/common';
 import { Toast, ToastrModule, ToastrService } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +15,14 @@ import { Toast, ToastrModule, ToastrService } from 'ngx-toastr';
   styleUrl: './login.component.css',
 })
 export class LoginComponent implements OnInit {
+  @NgModule({
+    imports: [
+      HttpClientModule,
+    ],
+  })
   usuario: User[] = [];
   ngOnInit(): void {}
-  constructor(
+  constructor(  
     private user_http: UserService,
   ){
   }
