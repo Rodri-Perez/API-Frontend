@@ -18,6 +18,7 @@ export class ListarProductosComponent implements OnInit {
   listProductos: Producto[] = [];
   bus = "";
   busc = "";
+  busca = 0;
 
   constructor(
     private _cargaScripts: CargarScriptsService,
@@ -54,6 +55,9 @@ export class ListarProductosComponent implements OnInit {
   }
   cambio_cat(categoria: string){
     this.busc = categoria;
+  }
+  cambio_precio(precio: number){
+    this.busca = 0;
   }
 }
 

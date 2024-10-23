@@ -13,8 +13,13 @@
           <li (click)="cambio_cat('Discos')">Discos</li>
           <li (click)="cambio_cat('Barras')">Barras</li>
           <li (click)="cambio_cat('Pesas')">Pesas</li>
-          <li (click)="cambio_cat('Pelotas')">Las que tengo colgadas</li>
-
+          <li (click)="cambio_cat('Pelotas')">Pelotas</li>
+        </div>
+        <div>
+          <li (click)="cambio_precio(5000)">>5000</li>
+          <li (click)="cambio_precio(20000)">20000</li>
+          <li (click)="cambio_precio(100000)">100000</li>
+          <li (click)="cambio_precio(10000000)">100000000</li>
         </div>
         <div class="card">
         <div class="card-body text-center">
@@ -44,12 +49,12 @@
                 <th scope="col">precio</th>
               </tr>
               <tr *ngFor="let producto of listProductos">
-                <th scope="row" *ngIf="producto.talle_peso == bus && producto.categoria == busc">{{ producto.nombre }}</th>
-                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc">{{ producto.categoria }}</td>
-                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc">{{ producto.descripcion }}</td>
-                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc">{{ producto.talle_peso }}</td>
-                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc">{{ producto.stock }}</td>
-                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc">{{ producto.precio }}</td>
+                <th scope="row" *ngIf="producto.talle_peso == bus && producto.categoria == busc && producto.precio <=busca">{{ producto.nombre }}</th>
+                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc && producto.precio <= busca">{{ producto.categoria }}</td>
+                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc && producto.precio <= busca">{{ producto.descripcion }}</td>
+                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc && producto.precio <= busca">{{ producto.talle_peso }}</td>
+                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc && producto.precio <= busca">{{ producto.stock }}</td>
+                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc && producto.precio <= busca">{{ producto.precio }}</td>
                 <td>
                   <i
                     class="fa-solid fa-trash text-danger"
