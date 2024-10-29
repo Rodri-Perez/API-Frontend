@@ -15,10 +15,6 @@ export class ProductoService {
     return this._http.get(this.url);
   }
 
-  getAllByTalle(talle_peso: string): Observable<any> {
-    return this._http.get(this.url = talle_peso);
-  }
-
   eliminarProducto(id: string): Observable<any> {
     return this._http.delete(this.url + id + '/');
   }

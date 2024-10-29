@@ -25,6 +25,8 @@ export class ListarProductosComponent implements OnInit {
   cant = 0;
   listProductos: Producto[] = [];
   bus = '';
+  busc = '';
+  busca = 0;
 
   constructor(
     private _cargaScripts: CargarScriptsService,
@@ -114,5 +116,11 @@ export class ListarProductosComponent implements OnInit {
     this.aux = this.productoCarrito.filter((e) => e.id !== id);
     this.productoCarrito = this.aux;
     this._toastService.success('Producto borrad del carrito');
+  }
+  cambio_cat(categoria: string) {
+    this.busc = categoria;
+  }
+  cambio_precio(precio: number) {
+    this.busca = precio;
   }
 }
