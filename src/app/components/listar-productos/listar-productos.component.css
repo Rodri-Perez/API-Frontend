@@ -3,6 +3,7 @@
 }
 html body {
   min-height: 100vh;
+  min-width: 100vh;
 }
 .fa-solid {
   cursor: pointer;
@@ -35,7 +36,14 @@ html body {
 hr {
   height: 10px;
 }
-
+.talle_container {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+}
+/* .talle_li{
+  display: inline;
+} */
 #bonsito {
   position: absolute;
   margin-top: 470px;

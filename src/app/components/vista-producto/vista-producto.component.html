@@ -1,17 +1,19 @@
 <title>Producto</title>
-<h1>{{ title }}</h1>
-<div *NgIf="listProductos.length < 0"></div>
+<h1></h1>
 <div class="card" style="max-width: 100%">
   <div class="row g-0">
     <div class="col-md-2">
-      <img src="..." class="img-fluid rounded-start" alt="..." />
+      <img
+        src="{{ producto.imagen }}"
+        class="img-fluid rounded-start"
+        alt="..."
+      />
     </div>
     <div class="col-md-6">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">{{ producto.nombre }}</h5>
         <p class="card-text">
-          This is a wider card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
+          {{ producto.descripcion }}
         </p>
         <p class="card-text">
           <small class="text-body-primary">Last updated 3 mins ago</small>
@@ -20,24 +22,3 @@
     </div>
   </div>
 </div>
-<thead>
-  <tr>
-    <th scope="col">Producto</th>
-    <th scope="col">Categoria</th>
-    <th scope="col">descripcion</th>
-    <th scope="col">talle</th>
-    <th scope="col">stock</th>
-    <th scope="col">precio</th>
-  </tr>
-  <tr *NgFor="let producto of listProductos">
-    <th scope="row">{{ producto.nombre }}</th>
-    <td>{{ producto.categoria }}</td>
-    <td>{{ producto.descripcion }}</td>
-    <td>{{ producto.talle_peso }}</td>
-    <td>{{ producto.stock }}</td>
-    <td>{{ producto.precio }}</td>
-    <td></td>
-  </tr>
-</thead>
-
-<p>vista-producto works!</p>

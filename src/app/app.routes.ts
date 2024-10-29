@@ -17,6 +17,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SigInComponent },
   { path: 'carrito', component: CarritoComponent },
-  { path: 'producto', component: VistaProductoComponent },
+  { path: 'producto/:id', component: VistaProductoComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
