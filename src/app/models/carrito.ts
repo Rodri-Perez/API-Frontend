@@ -1,11 +1,13 @@
-import { Producto } from './producto';
-
 export class Carrito {
-  producto: Producto;
+  id: number;
+  nombre: string;
+  precio: number;
   cantidad: number;
 
-  constructor(producto: Producto, cantidad: number) {
-    this.producto = producto;
+  constructor(id: number, nombre: string, precio: number, cantidad: number) {
+    this.id = id;
+    this.nombre = nombre;
+    this.precio = precio;
     this.cantidad = cantidad;
   }
 }

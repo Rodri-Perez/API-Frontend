@@ -1,81 +1,169 @@
 <div class="container mt-5" id="Hola">
-  <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <div>
-          <li (click)="cambio('a')">a</li>
-          <li (click)="cambio('s')">s</li>
-          <li (click)="cambio('m')">m</li>
-        </div>
-        <div>
-          <li (click)="cambio_cat('Remeras')">Remeras</li>
-          <li (click)="cambio_cat('Pantalones')">Pantalones</li>
-          <li (click)="cambio_cat('Zapatillas')">Zapatillas</li>
-          <li (click)="cambio_cat('Discos')">Discos</li>
-          <li (click)="cambio_cat('Barras')">Barras</li>
-          <li (click)="cambio_cat('Pesas')">Pesas</li>
-          <li (click)="cambio_cat('Pelotas')">Pelotas</li>
-        </div>
-        <div>
-          <li (click)="cambio_precio(5000)">5000</li>
-          <li (click)="cambio_precio(20000)">20000</li>
-          <li (click)="cambio_precio(100000)">100000</li>
-          <li (click)="cambio_precio(10000000)">100000000</li>
-        </div>
-        <div class="card">
-        <div class="card-body text-center">
-          <span class="titulo bungee-tint-regular">Listado De Productos</span>
-          <button
-            class="btn btn-success float-end"
-            routerLink="/crear-producto"
-          >
-            Nuevo
-          </button>
-          <div
-            class="spinner-border text-danger"
-            *ngIf="listProductos.length < 0"
-            role="status"
-          >
-            <span class="visually-hidden">Loading...</span>
-          </div>
-
-          <table class="table table-striped" *ngIf="listProductos.length > 0">
-            <thead>
-              <tr>
-                <th scope="col">Producto</th>
-                <th scope="col">Categoria</th>
-                <th scope="col">descripcion</th>
-                <th scope="col">talle</th>
-                <th scope="col">stock</th>
-                <th scope="col">precio</th>
-              </tr>
-              <tr *ngFor="let producto of listProductos">
-                <th scope="row" *ngIf="producto.talle_peso == bus && producto.categoria == busc && producto.precio <=busca">{{ producto.nombre }}</th>
-                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc && producto.precio <= busca">{{ producto.categoria }}</td>
-                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc && producto.precio <= busca">{{ producto.descripcion }}</td>
-                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc && producto.precio <= busca">{{ producto.talle_peso }}</td>
-                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc && producto.precio <= busca">{{ producto.stock }}</td>
-                <td *ngIf="producto.talle_peso == bus && producto.categoria == busc && producto.precio <= busca">{{ producto.precio }}</td>
-                <td>
-                  <i
-                    class="fa-solid fa-trash text-danger"
-                    (click)="eliminarProducto(producto.id)"
-                  ></i>
-                  <i
-                    class="fa-solid fa-pen-to-square text-primary"
-                    [routerLink]="['/editar-producto', producto.id]"
-                  ></i>
-                </td>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
+  <div class="talle_container">
+    <select>
+      <option (click)="filtrar('a')" class="talle_li">a</option>
+      <option (click)="filtrar('S')" class="talle_li">S</option>
+      <option (click)="filtrar('m')" class="talle_li">m</option>
+      <option (click)="filtrar('p')" class="talle_li">p</option>
+    </select>
+    <div>
+      <select>
+        <option (click)="filtrar('remeras')">Remeras</option>
+        <option (click)="filtrar('Pantalones')">Pantalones</option>
+        <option (click)="filtrar('Zapatillas')">Zapatillas</option>
+        <option (click)="filtrar('Discos')">Discos</option>
+        <option (click)="filtrar('Barras')">Barras</option>
+        <option (click)="filtrar('Pesas')">Pesas</option>
+        <option (click)="filtrar('Pelotas')">Pelotas</option>
+      </select>
     </div>
     <div>
-      <a routerLink="/carrito" id="bonsito" class="btn btn-primary btn-lg">
-        <i id="textito" class="fa-solid fa-cart-arrow-down"></i>
-      </a>
+      <select>
+        <option (click)="filtrar(5000)">5000</option>
+        <option (click)="filtrar(20000)">20000</option>
+        <option (click)="filtrar(100000)">100000</option>
+        <option (click)="filtrar(10000000)">100000000</option>
+      </select>
+    </div>
+  </div>
+  <div class="clase row g-0 justify-content-between">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="card">
+            <div class="card-body text-center">
+              <span class="titulo bungee-tint-regular"
+                >Listado De Productos</span
+              >
+              <button
+                class="btn btn-success float-end"
+                routerLink="/crear-producto"
+              >
+                Nuevo
+              </button>
+              <div
+                class="spinner-border text-danger"
+                *ngIf="listProductos.length < 0"
+                role="status"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+
+              <table
+                class="table table-striped"
+                *ngIf="listProductos.length > 0"
+              >
+                <thead>
+                  <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">descripcion</th>
+                    <th scope="col">imagen</th>
+                    <th scope="col">talle</th>
+                    <th scope="col">stock</th>
+                    <th scope="col">precio</th>
+                  </tr>
+                  <tr *ngFor="let producto of listProductos">
+                    <th scope="row">
+                      {{ producto.nombre }}
+                    </th>
+
+                    <td>
+                      {{ producto.categoria }}
+                    </td>
+                    <td>
+                      {{ producto.descripcion }}
+                    </td>
+                    <td>
+                      <img src="{{ producto.imagen }}" width="30px" />
+                    </td>
+                    <td>
+                      {{ producto.talle_peso }}
+                    </td>
+                    <td>
+                      {{ producto.stock }}
+                    </td>
+                    <td>
+                      {{ producto.precio }}
+                    </td>
+                    <td *ngIf="auth">
+                      <i
+                        class="fa-solid fa-trash text-danger"
+                        (click)="eliminarProducto(producto.id)"
+                      ></i>
+                      <i
+                        class="fa-solid fa-pen-to-square text-primary"
+                        [routerLink]="['/editar-producto', producto.id]"
+                      ></i>
+                    </td>
+                    <td *ngIf="auth == false">
+                      <i
+                        class="fa-solid fa-plus text-success"
+                        (click)="agregarProducto(producto.id)"
+                      ></i>
+                    </td>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="carrito_container col-lg-4">
+          <h2 class="titulo_carrito">CARRITO</h2>
+          <div class="carrito_body">
+            <table class="table table-striped" *ngIf="carrito.length > 0">
+              <thead>
+                <tr>
+                  <th scope="col">Producto</th>
+                  <th scope="col">precio</th>
+                  <th scope="col">Cant.</th>
+                  <th scope="col"></th>
+                </tr>
+                <tr *ngFor="let e of carrito">
+                  <th scope="row">
+                    <a routerLink="/producto/{{ e.id }}">{{ e.nombre }}</a>
+                  </th>
+                  <td>
+                    {{ e.precio }}
+                  </td>
+                  <td>
+                    {{ e.cantidad }}
+                  </td>
+                  <td>
+                    <i
+                      class="fa-solid fa-minus text-danger"
+                      (click)="quitarProducto(e.id)"
+                    ></i>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="col">Total</th>
+                  <th scope="col">{{ total }}</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <hr />
+            <div class="row g-0 justify-content-between">
+              <button
+                class="btn btn-outline-danger col-4"
+                (click)="limpiarCarrito()"
+              >
+                Limpiar
+              </button>
+              <button
+                class="btn btn-outline-success col-4"
+                (click)="comprarCarrito()"
+              >
+                Comprar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

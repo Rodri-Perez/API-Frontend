@@ -9,7 +9,6 @@ import {
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Producto } from '../../models/producto';
 import { ProductoService } from '../../services/producto.service';
-import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -29,7 +28,7 @@ export class CrearProductoComponent implements OnInit {
     private router: Router,
     private _productoService: ProductoService,
     private aRouter: ActivatedRoute,
-    private _toastService: ToastrService
+    private _toastService: ToastrService,
   ) {
     this.productoForm = this.fb.group({
       cod: ['', Validators.required],
@@ -71,7 +70,7 @@ export class CrearProductoComponent implements OnInit {
           console.log(error);
           this._toastService.error('Producto inexistente');
           this.productoForm.reset();
-        }
+        },
       );
     } else {
       this._productoService.agregarProducto(PRODUCTO).subscribe(
@@ -83,7 +82,7 @@ export class CrearProductoComponent implements OnInit {
           console.log(error);
           this._toastService.error('No se pudo guardar el producto');
           this.productoForm.reset();
-        }
+        },
       );
     }
   }

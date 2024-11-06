@@ -18,13 +18,13 @@
                   type="text"
                   class="form-control form-control-lg"
                   placeholder="Nombre"
-                  formControlName="nombre"
+                  formControlName="Username"
                 />
                 <div
                   class="text-danger"
                   *ngIf="
-                    userForm.get('nombre')?.hasError('required') &&
-                    userForm.get('nombre')?.touched
+                    userForm.get('Username')?.hasError('required') &&
+                    userForm.get('Username')?.touched
                   "
                 >
                   <span
@@ -37,13 +37,13 @@
                   type="text"
                   class="form-control form-control-lg"
                   placeholder="Email"
-                  formControlName="email"
+                  formControlName="Email"
                 />
                 <div
                   class="text-danger"
                   *ngIf="
-                    userForm.get('email')?.hasError('required') &&
-                    userForm.get('email')?.touched
+                    userForm.get('Email')?.hasError('required') &&
+                    userForm.get('Email')?.touched
                   "
                 >
                   <span>EL email del user es <strong>obligatorio</strong></span>
@@ -54,13 +54,13 @@
                   type="text"
                   class="form-control form-control-lg"
                   placeholder="Password"
-                  formControlName="password"
+                  formControlName="Password"
                 />
                 <div
                   class="text-danger"
                   *ngIf="
-                    userForm.get('password')?.hasError('required') &&
-                    userForm.get('password')?.touched
+                    userForm.get('Password')?.hasError('required') &&
+                    userForm.get('Password')?.touched
                   "
                 >
                   <span>Password del user es <strong>obligatorio</strong></span>

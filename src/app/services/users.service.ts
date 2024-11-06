@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
   private readonly _http = inject(HttpClient);
   user = User;
-  url = 'http://localhost:8000/';
+  url = 'http://localhost:8000/api/v1/usuarios/';
 
   getUser(): Observable<any> {
     return this._http.get(this.url);

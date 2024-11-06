@@ -1,12 +1,12 @@
 import { NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../models/user';
 import { UserService } from '../../services/users.service';
@@ -26,27 +26,26 @@ export class SigInComponent {
     private router: Router,
     private aRouter: ActivatedRoute,
     private user_http: UserService,
-    private _toastService: ToastrService
+    private _toastService: ToastrService,
   ) {
     this.userForm = this.fb.group({
-      nombre: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      Username: ['', Validators.required],
+      Email: ['', Validators.required],
+      Password: ['', Validators.required],
       password_auth: ['', Validators.required],
     });
   }
 
-  ngOnInit(): void {}
-
   agregarUsuario() {
     const USUARIO: User = {
-      id: 0,
-      nombre: this.userForm.get('nombre')?.value,
-      email: this.userForm.get('email')?.value,
-      password: this.userForm.get('password')?.value,
+      Id_Usuario: 0,
+      Username: this.userForm.get('Username')?.value,
+      Email: this.userForm.get('Email')?.value,
+      Password: this.userForm.get('Password')?.value,
     };
     this.user_http.postUser(USUARIO).subscribe(
       (data) => {
+        console.log(data);
         this.router.navigate(['/']);
         this._toastService.success('Usuario registrado correctamente');
       },
@@ -54,7 +53,7 @@ export class SigInComponent {
         console.log(error);
         this._toastService.error('No se pudo registrar al usuario');
         this.userForm.reset();
-      }
+      },
     );
   }
 }
