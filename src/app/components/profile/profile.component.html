@@ -1,0 +1,47 @@
+<div class="row g-0 justify-content-center mt-5">
+  <div class="container row g-0 d-flex col-6">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="text-center text-primary">Usuario</h1>
+        <img
+          class=""
+          src="/1724358321894.png"
+          width="300px"
+          style="border-radius: 100%"
+        />
+        <div class="row g-0">
+          <div class="">
+            <label class="form-label col-m-12 mb-2"
+              >Nombre: {{ user?.Username }}</label
+            >
+          </div>
+          <div class="row g-0">
+            <label class="form-label col-md-12 mb-2"
+              >Email: {{ user?.Email }}</label
+            >
+          </div>
+        </div>
+        <div class="row g-0">
+          <label class="col-12 text-center text-info fs-1"
+            >Historial de Compra</label
+          >
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Producto</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Fecha de Compra</th>
+            </tr>
+            <tr *ngFor="let compra of userCompras">
+              <th scope="col"><a href="/producto/{{compra.id}}">{{ compra.nombre }}</a></th>
+              <th scope="col">{{ compra.cantidad }}</th>
+              <th scope="col">{{ compra.fecha }}</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="row g-0 justify-content-between"></div>
+      </div>
+    </div>
+  </div>
+</div>

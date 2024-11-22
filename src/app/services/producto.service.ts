@@ -23,7 +23,7 @@ export class ProductoService {
     return this._http.post(this.url, producto);
   }
 
-  obtenerProducto(id: string): Observable<any> {
+  obtenerProducto(id: number): Observable<any> {
     return this._http.get(this.url + id + '/');
   }
 

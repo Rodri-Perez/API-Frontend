@@ -28,7 +28,7 @@ export class VistaProductoComponent implements OnInit {
     _cargaScripts.carga(['js/dinamic']);
   }
 
-  obtenerProducto(id: string) {
+  obtenerProducto(id: number) {
     this._productoService.obtenerProducto(id).subscribe(
       (data) => {
         this.producto = data;
@@ -39,6 +39,6 @@ export class VistaProductoComponent implements OnInit {
     );
   }
   ngOnInit(): void {
-    this.obtenerProducto(this.id);
+    this.obtenerProducto(Number(this.id));
   }
 }

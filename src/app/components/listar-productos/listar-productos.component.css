@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  box-sizing: border-box;
 }
 html body {
   min-height: 100vh;
@@ -51,4 +52,12 @@ hr {
 }
 /* #textito{
 
+} */
+.productos {
+  position: absolute;
+  filter: blur(10px);
+}
+/*
+
+#Tarjeta {
 } */

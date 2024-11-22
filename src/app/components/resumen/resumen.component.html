@@ -1,0 +1,28 @@
+<div class="row g-0 justify-content-center">
+  <h1 class="text-info col-12 text-center mt-4">
+    <i
+      >Felicidades por tu compra
+      <strong class="text-danger">{{ user?.Username }}</strong
+      >!!</i
+    >
+  </h1>
+  <div class="card col-6 mt-4">
+    <div class="card-body">
+      <h2 class="text-success text-center">Detalle de tu compra</h2>
+      <table class="table mt-4">
+        <thead>
+          <tr>
+            <th scope="col">Producto</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Fecha</th>
+          </tr>
+          <tr *ngFor="let compra of userCompras">
+            <td>{{ compra.nombre }}</td>
+            <td>{{ compra.cantidad }}</td>
+            <td>{{ compra.fecha }}</td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>

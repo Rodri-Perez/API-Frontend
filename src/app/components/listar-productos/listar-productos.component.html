@@ -1,4 +1,4 @@
-<div class="container mt-5" id="Hola">
+<div class="container mt-5" id="Hola" [ngClass]="{ productos: styleProduct }">
   <div class="talle_container">
     <select>
       <option (click)="filtrar('a')" class="talle_li">a</option>
@@ -65,7 +65,9 @@
                   </tr>
                   <tr *ngFor="let producto of listProductos">
                     <th scope="row">
-                      {{ producto.nombre }}
+                      <a href="/producto/{{ producto.id_producto }}">{{
+                        producto.nombre
+                      }}</a>
                     </th>
 
                     <td>
@@ -89,17 +91,20 @@
                     <td *ngIf="auth">
                       <i
                         class="fa-solid fa-trash text-danger"
-                        (click)="eliminarProducto(producto.id)"
+                        (click)="eliminarProducto(producto.id_producto)"
                       ></i>
                       <i
                         class="fa-solid fa-pen-to-square text-primary"
-                        [routerLink]="['/editar-producto', producto.id]"
+                        [routerLink]="[
+                          '/editar-producto',
+                          producto.id_producto,
+                        ]"
                       ></i>
                     </td>
                     <td *ngIf="auth == false">
                       <i
                         class="fa-solid fa-plus text-success"
-                        (click)="agregarProducto(producto.id)"
+                        (click)="agregarProducto(producto.id_producto)"
                       ></i>
                     </td>
                   </tr>
@@ -165,5 +170,98 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row g-0 justify-content-center" id="Tarjeta">
+  <div class="card mt-5 col-5">
+    <h1 class="text-center mt-4 titulo fs-1">Pago Tarjeta</h1>
+
+    <div class="row g-0 justify-content-between ps-4 pe-4">
+      <div class="col-4"><p class="fs-3">Total:</p></div>
+      <div class="col-2">
+        <p class="fs-3">{{ total }}</p>
+      </div>
+    </div>
+    <form
+      class="row g-0 justify-content-center card-body m-2"
+      method="POST"
+      enctype="multipart/form-data"
+      novalidate=""
+      [formGroup]="tarjetaForm"
+      (ngSubmit)="comprar()"
+    >
+      <input
+        type="text"
+        class="form-control form-control-lg m-2"
+        placeholder="Numero de tarjeta"
+        formControlName="cardNumber"
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          tarjetaForm.get('cardNumber')?.hasError('required') &&
+          tarjetaForm.get('cardNumber')?.touched
+        "
+      >
+        <span>EL Numero tarjeta <strong>obligatorio</strong></span>
+      </div>
+      <div class="row g-0 justify-content-between">
+        <div class="col-5">
+          <label class="col-12">MM</label>
+          <select class="col-12" formControlName="month">
+            <option *ngFor="let mes of meses" value="{{ mes }}">
+              {{ mes }}
+            </option>
+          </select>
+          <div
+            class="text-danger"
+            *ngIf="
+              tarjetaForm.get('month')?.hasError('required') &&
+              tarjetaForm.get('month')?.touched
+            "
+          >
+            <span>EL mes de vencimiento es <strong>obligatorio</strong></span>
+          </div>
+        </div>
+        <div class="col-5">
+          <label class="">AAAA</label>
+          <select class="col-12" formControlName="year">
+            <option *ngFor="let year of years" value="{{ year }}">
+              {{ year }}
+            </option>
+          </select>
+          <div
+            class="text-danger"
+            *ngIf="
+              tarjetaForm.get('year')?.hasError('required') &&
+              tarjetaForm.get('year')?.touched
+            "
+          >
+            <span>EL año de vencimiento es <strong>obligatorio</strong></span>
+          </div>
+        </div>
+      </div>
+      <input
+        type="text"
+        class="form-control form-control-lg m-2"
+        placeholder="Codigo de seguridad"
+        formControlName="cod"
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          tarjetaForm.get('cod')?.hasError('required') &&
+          tarjetaForm.get('cod')?.touched
+        "
+      >
+        <span>EL codigo de la tarjeta es <strong>obligatorio</strong></span>
+      </div>
+      <input
+        type="submit"
+        class="btn btn-outline-success col-4 m-2"
+        value="Enviar"
+      />
+    </form>
   </div>
 </div>

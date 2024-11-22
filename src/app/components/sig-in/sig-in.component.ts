@@ -9,6 +9,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../models/user';
+import * as uuid from 'uuid';
 import { UserService } from '../../services/users.service';
 
 @Component({
@@ -35,14 +36,21 @@ export class SigInComponent {
       password_auth: ['', Validators.required],
     });
   }
+  get passwordValue() {
+    return this.userForm.get('Password');
+  }
+  get passwordConfirmValue() {
+    return this.userForm.get('password_auth');
+  }
 
   agregarUsuario() {
     const USUARIO: User = {
-      Id_Usuario: 0,
+      Id_Usuario: uuid.v4(),
       Username: this.userForm.get('Username')?.value,
       Email: this.userForm.get('Email')?.value,
       Password: this.userForm.get('Password')?.value,
     };
+    console.log(USUARIO);
     this.user_http.postUser(USUARIO).subscribe(
       (data) => {
         console.log(data);

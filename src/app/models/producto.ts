@@ -1,5 +1,5 @@
 export class Producto {
-  id: number;
+  id_producto: number;
   nombre: string;
   cod: string;
   talle_peso: string;
@@ -10,7 +10,7 @@ export class Producto {
   imagen: string;
 
   constructor(
-    id: number,
+    id_producto: number,
     nombre: string,
     cod: string,
     talle_peso: string,
@@ -20,7 +20,7 @@ export class Producto {
     stock: number,
     imagen: string,
   ) {
-    this.id = id;
+    this.id_producto = id_producto;
     this.nombre = nombre;
     this.cod = cod;
     this.talle_peso = talle_peso;

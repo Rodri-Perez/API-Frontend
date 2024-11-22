@@ -34,7 +34,7 @@
               </div>
               <div class="mb-3">
                 <input
-                  type="text"
+                  type="email"
                   class="form-control form-control-lg"
                   placeholder="Email"
                   formControlName="Email"
@@ -51,7 +51,7 @@
               </div>
               <div class="mb-3">
                 <input
-                  type="text"
+                  type="password"
                   class="form-control form-control-lg"
                   placeholder="Password"
                   formControlName="Password"
@@ -68,7 +68,7 @@
               </div>
               <div class="mb-3">
                 <input
-                  type="text"
+                  type="password"
                   class="form-control form-control-lg"
                   placeholder="Password Confirm"
                   formControlName="password_auth"
@@ -84,6 +84,12 @@
                     >Confirmar contraseña del user es
                     <strong>obligatorio</strong></span
                   >
+                </div>
+                <div
+                  class="text-danger"
+                  *ngIf="passwordValue?.value != passwordConfirmValue?.value"
+                >
+                  <span>Las contraseñas no <strong>Coinciden</strong></span>
                 </div>
               </div>
               <div class="mb-3">

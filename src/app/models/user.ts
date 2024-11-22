@@ -1,11 +1,13 @@
+import { UUIDTypes } from 'uuid';
+
 export class User {
-  Id_Usuario: number;
+  Id_Usuario: UUIDTypes;
   Username: string;
   Email: string;
   Password: string;
 
   constructor(
-    Id_Usuario: number,
+    Id_Usuario: UUIDTypes,
     Username: string,
     Email: string,
     Password: string,

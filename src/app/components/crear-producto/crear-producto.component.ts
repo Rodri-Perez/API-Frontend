@@ -49,7 +49,7 @@ export class CrearProductoComponent implements OnInit {
 
   agregarProducto() {
     const PRODUCTO: Producto = {
-      id: 0,
+      id_producto: 0,
       cod: this.productoForm.get('cod')?.value,
       categoria: this.productoForm.get('categoria')?.value,
       nombre: this.productoForm.get('nombre')?.value,
@@ -91,7 +91,7 @@ export class CrearProductoComponent implements OnInit {
     if (this.id !== null) {
       this.titulo = 'Editar Producto';
     }
-    this._productoService.obtenerProducto(this.id).subscribe((data) => {
+    this._productoService.obtenerProducto(Number(this.id)).subscribe((data) => {
       this.productoForm.setValue({
         cod: data.cod,
         categoria: data.categoria,
