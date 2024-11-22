@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
   private readonly _http = inject(HttpClient);
 
-  url = 'http://localhost:8000/api/v1/usuarios/';
-  urlLogin = 'http://localhost:8000/api/v1/usuarios/?Email=';
+  url = 'https://api-backend-production-8a94.up.railway.app/api/v1/usuarios/';
+  urlLogin = 'https://api-backend-production-8a94.up.railway.app/api/v1/usuarios/?Email=';
 
   getUsers(): Observable<any> {
     return this._http.get(this.url);

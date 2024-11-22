@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ComprasService {
   private readonly _http = inject(HttpClient);
   compras = compras;
-  url = 'http://localhost:8000/api/v1/compras/';
+  url = 'https://api-backend-production-8a94.up.railway.app/api/v1/compras/';
 
   getCompras(): Observable<any> {
     return this._http.get(this.url);

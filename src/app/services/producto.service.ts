@@ -9,7 +9,7 @@ import { Producto } from '../models/producto';
 export class ProductoService {
   private readonly _http = inject(HttpClient);
 
-  url = 'http://localhost:8000/api/v1/productos/';
+  url = 'https://api-backend-production-8a94.up.railway.app/api/v1/productos/';
 
   getAllProductos(): Observable<any> {
     return this._http.get(this.url);
